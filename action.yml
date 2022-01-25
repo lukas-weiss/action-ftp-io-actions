@@ -1,0 +1,33 @@
+name: 'FTP IO actions'
+author: 'Lukas Weiß'
+description: 'Containerized environment to do IO actions on a FTP server'
+branding:
+  icon: 'list'
+  color: 'green'
+inputs:
+  ftp_server:
+    description: "Address of your FTP server"
+    required: true
+  ftp_user:
+    description: 'User with access to your FTP share'
+    required: true
+  ftp_password:
+    description: 'Your FTP password'
+    required: false
+  ftp_io_action:
+    description: 'The FTP IO action you want to do, possible values upload|download download is the default'
+    required: true
+    default: 'download'
+  source_folder:
+    description: 'Source folder of the chosen action'
+    required: true
+  target_folder:
+    description: 'Target folder of the chosen action'
+    required: true
+  dry_run:
+    description: 'Do a dry run of your action'
+    required: false
+    default: 'false'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
